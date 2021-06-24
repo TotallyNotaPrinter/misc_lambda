@@ -1,0 +1,16 @@
+	2021-03-22T11:45:17.059-07:00	{'DeploymentId': 'd-1IUIW51O8', 'LifecycleEventHookExecutionId': 'eyJlbmNyeXB0ZWREYXRhIjoibGZRTUNFSXVYaVhoWHY1RVM1bWw0Snp4cWc5SDNzYVFzMFgvalJ4SzhPMi81RDBjWmh5VDRHZkhudDNTd2wvT0ZOeU41OHRFMDNNQlJCdFhHUUlML0hyN2EyZHBYY0dHV0pCdVVQUWpvMEtVaE5kRmhpbDNXL2F2RVpRK2pWbWppejBvcXljSyIsIml2UGFyYW1ldGVyU3BlYyI6InJUWjhaMmlibU50NVRsdlciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0='}
+	2021-03-22T11:45:17.837-07:00	================================================================
+	2021-03-22T11:45:17.837-07:00	the current resource label is: app/autoscaling-demo/55f65b56004a725e/targetgroup/tf-20210321190803732400000002/d804b45fa86e1fff
+	2021-03-22T11:45:17.837-07:00	================================================================
+	2021-03-22T11:45:17.837-07:00	the proposed resource label is: app/autoscaling-demo/55f65b56004a725e/targetgroup/tf-20210321190803732600000003/39f931416717e769
+	2021-03-22T11:45:17.837-07:00	================================================================
+	2021-03-22T11:45:17.837-07:00	invoked as Code Deploy Hook
+	2021-03-22T11:45:17.837-07:00	================================================================
+	2021-03-22T11:45:17.837-07:00	resource labels do not match, setting new policy with the new label
+	2021-03-22T11:45:18.270-07:00	================================================================
+	2021-03-22T11:45:18.270-07:00	updated policy is: {'PolicyARN': 'arn:aws:autoscaling:us-east-2:041706332677:scalingPolicy:10695fcb-d464-4fa2-9bb0-a717082d9686:resource/ecs/service/autoscaling-demo/prntrs-r-bad:policyName/prntrs-r-bad-autoscaling-policy', 'Alarms': [{'AlarmName': 'TargetTracking-service/autoscaling-demo/prntrs-r-bad-AlarmHigh-b452e397-4ffd-4467-8dcf-355a51ae9de2', 'AlarmARN': 'arn:aws:cloudwatch:us-east-2:041706332677:alarm:TargetTracking-service/autoscaling-demo/prntrs-r-bad-AlarmHigh-b452e397-4ffd-4467-8dcf-355a51ae9de2'}, {'AlarmName': 'TargetTracking-service/autoscaling-demo/prntrs-r-bad-AlarmLow-8365b2b5-d100-4b9d-a3dc-40f8a338001f', 'AlarmARN': 'arn:aws:cloudwatch:us-east-2:041706332677:alarm:TargetTracking-service/autoscaling-demo/prntrs-r-bad-AlarmLow-8365b2b5-d100-4b9d-a3dc-40f8a338001f'}], 'ResponseMetadata': {'RequestId': '60db801b-ec6b-4895-a605-371486d4e45e', 'HTTPStatusCode': 200, 'HTTPHeaders': {'x-amzn-requestid': '60db801b-ec6b-4895-a605-371486d4e45e', 'content-type': 'application/x-amz-json-1.1', 'content-length': '766', 'date': 'Mon, 22 Mar 2021 18:45:17 GMT'}, 'RetryAttempts': 0}}
+	2021-03-22T11:45:18.270-07:00	Done
+	2021-03-22T11:45:18.270-07:00	================================================================
+	2021-03-22T11:45:18.270-07:00	setting lifecycle hook status
+	2021-03-22T11:45:18.270-07:00	================================================================
+	2021-03-22T11:45:18.482-07:00	Done 
