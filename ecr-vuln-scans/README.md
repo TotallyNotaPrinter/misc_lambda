@@ -7,3 +7,6 @@ From SQS you can then easily ingest into a log aggregator like splunk, or levera
 see here for more info on the calls used:
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ecr.html#client
 https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/sqs.html#SQS.Client.send_message
+
+
+you just need to deploy, add the service specific perms, and then set a cron rule to kick them off 
