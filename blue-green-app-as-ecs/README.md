@@ -5,9 +5,6 @@ Current advice is to suspend the Auto-Scaling Policy prior to deployment, and th
 
 This is.....fine but ultimately is a bit involved, so, I automated it. 
 
-Here is a case you can refer to in which this solution was discussed and implemented:
-    - https://paragon-na.amazon.com/hz/view-case?caseId=8043584711#/
-
 The TL;DR is as such:
     - assuming 4 pieces of constant information this script will run as both a post-install hook, and a cloud watch event rule 
     - the logic checks the active policy against the live target group 
