@@ -17,6 +17,7 @@ By running it twice via cw event rule AND as a deploy hook it achieves some leve
 feel free to take this and run with it.
 
 the four pieces of info you need are:
+
     - LoadBalancer Name 
     - ECS Cluster ARN
     - ECS Service ARN 
