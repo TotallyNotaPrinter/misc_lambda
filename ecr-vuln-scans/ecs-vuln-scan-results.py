@@ -6,6 +6,7 @@ from botocore.exceptions import ClientError
 
 ecr = boto3.client('ecr', region_name='us-west-2')
 sqs = boto3.client('sqs', region_name='us-west-2')
+sns = boto3.client('sns', region_name='us-west-2')
 
 def lambda_handler(event, context):
     print('getting repos')
@@ -29,20 +30,20 @@ def repo_get():
             repos.append(repo)
         return repos
 
-def construct_payload(repos):
+def construct_payload(repos): 
     images = []
     payload = []
     null = []
     for i in repos:
-        registry = i['registryId']
-        repository = i['repositoryName']
+        registry = i['registryId'] 
+        repository = i['repositoryName'] 
         image = ecr.describe_images(repositoryName=i['repositoryName'])
         images.append(image)
     for i in images:
-        repo_name = i['imageDetails'][0]['repositoryName']
-        if repo_name == 'fedora':
-            print('fedora is unsupported as of this time')
-        elif repo_name != 'fedora':
+        description = i['imageDetails'][0]['imageScanStatus']['description']
+        if description == 'UnsupportedImageError: The operating system and/or package manager are not supported.':
+            print('this image is not supported as of this time')
+        elif description != 'UnsupportedImageError: The operating system and/or package manager are not supported.':
             o = {
                 'digest': i['imageDetails'][0]['imageDigest'],
                 'tag': i['imageDetails'][0]['imageTags'][0],
@@ -55,6 +56,7 @@ def construct_payload(repos):
 
 def describe_findings(payload):
     results = []
+    print(len(payload))
     for i in payload:
         try:
             resultresp = ecr.describe_image_scan_findings(
@@ -69,6 +71,7 @@ def describe_findings(payload):
         except ClientError as err:
             print(err.response['Error']['Message'])
             print(registry,repository,digest,tag)
+    print(len(results))
     return results
 
 def ship_results(results):
