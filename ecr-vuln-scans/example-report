@@ -1,0 +1,55 @@
+{
+  "registryId": "REGISTRY_ID",
+  "repositoryName": "stress",
+  "imageId": {
+    "imageDigest": "sha256:a54b3de395cdbddf8b15f332664c844d6ade5401e84eac66a1fe24d23ce963d9",
+    "imageTag": "latest"
+  },
+  "imageScanStatus": {
+    "status": "COMPLETE",
+    "description": "The scan was completed successfully."
+  },
+  "imageScanFindings": {
+    "imageScanCompletedAt": "2021-06-24 11:17:14-07:00",
+    "vulnerabilitySourceUpdatedAt": "2021-06-24 02:25:21-07:00",
+    "findings": [
+      {
+        "name": "CVE-2020-28928",
+        "uri": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-28928",
+        "severity": "LOW",
+        "attributes": [
+          {
+            "key": "package_version",
+            "value": "1.2.2-r0"
+          },
+          {
+            "key": "package_name",
+            "value": "musl"
+          },
+          {
+            "key": "CVSS2_VECTOR",
+            "value": "AV:L/AC:L/Au:N/C:N/I:N/A:P"
+          },
+          {
+            "key": "CVSS2_SCORE",
+            "value": "2.1"
+          }
+        ]
+      }
+    ],
+    "findingSeverityCounts": {
+      "LOW": 1
+    }
+  },
+  "ResponseMetadata": {
+    "RequestId": "",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "",
+      "date": "Thu, 24 Jun 2021 20:26:29 GMT",
+      "content-type": "application/x-amz-json-1.1",
+      "content-length": "726"
+    },
+    "RetryAttempts": 0
+  }
+}
