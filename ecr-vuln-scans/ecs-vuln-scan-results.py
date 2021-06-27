@@ -23,20 +23,20 @@ def lambda_handler(event, context):
         'body': json.dumps('Successfull')
     }
 
-def repo_get(): 
-        repos = [] 
+def repo_get():
+        repos = []
         ecrRepos = ecr.describe_repositories()
         for repo in ecrRepos['repositories']:
             repos.append(repo)
         return repos
 
-def construct_payload(repos): 
+def construct_payload(repos):
     images = []
     payload = []
     null = []
     for i in repos:
-        registry = i['registryId'] 
-        repository = i['repositoryName'] 
+        registry = i['registryId']
+        repository = i['repositoryName']
         image = ecr.describe_images(repositoryName=i['repositoryName'])
         images.append(image)
     for i in images:
@@ -56,7 +56,6 @@ def construct_payload(repos):
 
 def describe_findings(payload):
     results = []
-    print(len(payload))
     for i in payload:
         try:
             resultresp = ecr.describe_image_scan_findings(
@@ -71,7 +70,6 @@ def describe_findings(payload):
         except ClientError as err:
             print(err.response['Error']['Message'])
             print(registry,repository,digest,tag)
-    print(len(results))
     return results
 
 def ship_results(results):
