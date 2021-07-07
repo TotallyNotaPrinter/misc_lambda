@@ -77,7 +77,7 @@ def ship_results(results):
         try:
             msg = json.dumps(result, indent=4, default=str)
             msgresp = sqs.send_message(
-                QueueUrl='https://sqs.us-west-2.amazonaws.com/041706332677/test-splunk-ecr-vulnscan',
+                QueueUrl='Your SQS Queue here',
                 MessageBody= msg
             )
         except ClientError as err:
