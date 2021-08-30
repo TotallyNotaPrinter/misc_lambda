@@ -7,10 +7,15 @@ Current advice is to suspend the Auto-Scaling Policy prior to deployment, and th
 This is.....fine but ultimately is a bit involved, so, I automated it. 
 
 The TL;DR is as such:
+    
     - assuming 4 pieces of constant information this script will run as both a post-install hook, and a cloud watch event rule 
+    
     - the logic checks the active policy against the live target group 
+    
     - if there's a match, the lambda will do nothing
+    
     - if the resource label for the policy does not match the live target group, it will replace the auto-scaling policy with one that is correct
+    
 
 This ensures that application auto scaling won't break on every other deploy. 
 
@@ -21,9 +26,13 @@ feel free to take this and run with it.
 the four pieces of info you need are:
 
     - LoadBalancer Name 
+    
     - ECS Cluster ARN
+    
     - ECS Service ARN 
+    
     - Resource Name (from the Scaling Policy)
+    
 
 The event passed into the lambda is different depending on whether it is triggered by the cloudwatch source, or, the hook. 
 
@@ -38,12 +47,19 @@ So, for example, if triggered as a hook the DeploymentId and LifecycleEventHookE
 The rest of the logic however is pretty much as follows:
 
     - get the Deployment Group Info
+    
     - pull out the bits you need for the API calls you're going to have to make. 
+    
     - find the active target group by pulling out the active target group from the forwarding config
+    
     - look for a match on the targetgroup from the forwarding config
-    - describe the current scaling policy and pull the active policy name and resource label 
+    
+    - describe the current scaling policy and pull the active policy name and resource label
+    
     - construct a temporary resource label using the target group that we identified as active from the forwarding config
-    - compare the resource labels, if they match do nothing, exit. if they do not match, put the new policy in place using the new resource label we constructed.  
+    
+    - compare the resource labels, if they match do nothing, exit. if they do not match, put the new policy in place using the new resource label we constructed.
+    
 
 That flow is the same regardless of trigger source, and in my tests has worked pretty well, including being run immediately after a stop and rollback from the cloudwatch trigger. 
 
